@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import logo from "../../public/webLogo.jpg";
 import SearchBar from "./SearchBar";
@@ -6,10 +7,14 @@ import { CgProfile } from "react-icons/cg";
 import { IoIosCart } from "react-icons/io";
 import { Catagery } from "./Catagery";
 
-export const Navbar = () => {
- 
+import Logout from "./Logout";
+import { useSession } from "next-auth/react";
+
+export const Navbar =  () => {
+   const {data:session } = useSession()
+   console.log(session)
   return (
-    <div className="flex w-full items-center justify-between h-16 p-3 border-b-1">
+    <div className="flex w-full items-center justify-between h-16 p-3">
       <Link href={"/"}>
        <Image
           src={logo}
@@ -28,14 +33,18 @@ export const Navbar = () => {
         <SearchBar />
       </div>
 
-      <div className="flex items-center gap-7">
+      {session?.user ?  <div className="flex items-center gap-7">
         <Link href={"/profile/1"} className="flex items-center gap-1">
           <CgProfile /> Profile
-        </Link>
+        </Link> 
+
         <Link href={"/cart"} className="flex items-center gap-1">
           <IoIosCart /> Cart
-        </Link>
-      </div>
+        </Link> 
+      </div> : <Link href={'/api/login'}>Login</Link>}
+
+
+       {session?.user && <Logout/>}
     </div>
   );
 };

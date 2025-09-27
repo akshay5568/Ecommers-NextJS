@@ -1,7 +1,12 @@
+import UploadProduct from "@/components/UploadProduct"
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+
+        <UploadProduct/>
+
+    </div>
   )
 }
 
