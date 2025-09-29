@@ -7,7 +7,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 //For the filtering Carts.
 export const cartFilter = async () => {
   await connectDB();
-  const response = await fetch("http://127.0.0.1:3000/cart/api");   
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/cart/api`);   
   const CartData = await response.json();
   const session = await getServerSession(authOptions);
   const allUserCarts = CartData?.filter(

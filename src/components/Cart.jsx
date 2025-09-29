@@ -9,7 +9,7 @@ const Cart = ({ userCarts }) => {
   const [allUserCart, setAllUserCart] = useState(userCarts);
   const DeleteButton = async (id) => {
     try {
-      const res = fetch("http://127.0.0.1:3000/cart/api", {
+      const res = fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/cart/api`, {
         method: "DELETE",
         body: JSON.stringify(id),
       });
