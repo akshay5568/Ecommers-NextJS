@@ -1,7 +1,13 @@
+import Cart from "@/components/Cart";
+import { cartFilter } from "@/lib/actions";
 
-const page = () => {
+const page = async () => {
+   const allUserCarts = await cartFilter();
+   
   return (
-    <div>page</div>
+    <div>
+        <Cart userCarts={allUserCarts}/>
+    </div>
   )
 }
 

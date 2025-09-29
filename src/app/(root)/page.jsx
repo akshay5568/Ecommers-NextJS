@@ -1,10 +1,8 @@
 import HomeBanner from "@/components/HomeBanner";
 import Products from "@/components/Products";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+
 
 const Home = async () => {
-  const session = await getServerSession(authOptions);
    
   return (
     <div className="w-full">
@@ -12,7 +10,7 @@ const Home = async () => {
         <HomeBanner />     
       </section>
 
-      <section>
+      <section className="w-full h-fit">
         <Products/>
       </section>
     </div>

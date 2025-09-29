@@ -3,24 +3,23 @@ import { Button } from "./ui/button";
 import image from "../../public/image.jpg";
 import connectDB from "@/lib/db";
 import { Product } from "@/schemas/productSchema";
+import AddToCart from "./AddToCart";
 
 const FullProductPage = async ({id}) => {
 
-  console.log(id)
   await connectDB();
   const ProductDetails = await Product.findById(id);
-  console.log(ProductDetails.details)
   return (
-    <div className="w-full p-2">
+    <div className="w-full p-2 h-fit">
 
-      <div className="flex  w-full gap-30">
+      <div className="flex  w-full gap-30 h-120">
 
-        <div className="w-[50%]">
+        <div className="w-[50%] h-full">
           <Image
-            className="rounded-xl m-auto"
+            className="rounded-xl m-auto w-full h-full object-fit"
             alt="productImage"
-            width={700}
-            height={500}
+            width={200}
+            height={200}
             src={ProductDetails.img}
           />
         </div>
@@ -47,8 +46,8 @@ const FullProductPage = async ({id}) => {
           </div>
 
           <div className="flex items-center gap-3">
-            <Button>Buy</Button>
-            <Button>Add To Cart</Button>
+            <Button className={'mt-2 rounded-md'}>Buy</Button>
+            <AddToCart productID={ProductDetails._id}/>
           </div>
         </div>
       </div>

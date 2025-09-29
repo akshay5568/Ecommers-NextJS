@@ -52,7 +52,8 @@ const UploadProduct = () => {
 
 
   return (
-    <div>
+    <div className="w-[30%] p-5 rounded-md m-auto bg-gray-50">
+       <h1 className="mb-2 ">UPLOAD PRODUCT VIA FILL THIS FORM</h1>
       <form onSubmit={handlerSubmit}>
         <input
           type="text"
@@ -60,29 +61,42 @@ const UploadProduct = () => {
           placeholder="Enter Title"
         value={inputData.title} 
           onChange={inputHandler}
+          required
+          className="w-full p-2 border-1 border-gray-900 rounded-md"
         />
+        <br /><br />
         <input
           type="text"
           name="details"
           placeholder="Enter Details"
           value={inputData.details} 
           onChange={inputHandler}
+          required
+          className="w-full p-2 border-1 border-gray-900 rounded-md"
+
         />
+        <br /><br />
         <input
           type="number"
           name="price"
           placeholder="Enter price"
           value={inputData.price}
+          className="w-full p-2 border-1 border-gray-900 rounded-md"
+          required
           onChange={inputHandler}
         />
+        <br /><br />
          <input
           type="text"
           name="img"
           placeholder="Enter img url"
           value={inputData.img}
+          required
+          className="w-full p-2 border-1 border-gray-900 rounded-md"
+
           onChange={inputHandler}
         />
-        <Button>Submit</Button>
+        <Button className={'mt-2 p-2'}>Submit</Button>
       </form>
     </div>
   );

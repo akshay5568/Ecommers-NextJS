@@ -10,9 +10,10 @@ import { Catagery } from "./Catagery";
 import Logout from "./Logout";
 import { useSession } from "next-auth/react";
 
+
 export const Navbar =  () => {
    const {data:session } = useSession()
-   console.log(session)
+    console.log(session)
   return (
     <div className="flex w-full items-center justify-between h-16 p-3">
       <Link href={"/"}>
@@ -34,14 +35,17 @@ export const Navbar =  () => {
       </div>
 
       {session?.user ?  <div className="flex items-center gap-7">
-        <Link href={"/profile/1"} className="flex items-center gap-1">
+        <Link href={"/profile"} className="flex items-center gap-1">
           <CgProfile /> Profile
         </Link> 
 
         <Link href={"/cart"} className="flex items-center gap-1">
-          <IoIosCart /> Cart
+          <IoIosCart /> Cart {}
         </Link> 
-      </div> : <Link href={'/api/login'}>Login</Link>}
+      </div> : <div className="flex gap-2">
+            <Link href={'/api/login'}>Login</Link> 
+            <Link href={'/signup'}>signup</Link> 
+          </div>}
 
 
        {session?.user && <Logout/>}
