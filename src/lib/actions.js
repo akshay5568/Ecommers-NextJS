@@ -1,17 +1,18 @@
 import { getServerSession } from "next-auth";
 import connectDB from "./db";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { Cart } from "@/schemas/cartSchema";
 
 
 
 //For the filtering Carts.
 export const cartFilter = async () => {
   await connectDB();
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/cart/api`);   
-  const CartData = await response.json();
+  // const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/cart/api`);   
+  const CartData = await Cart.find().populate('productId').lean();
   const session = await getServerSession(authOptions);
   const allUserCarts = CartData?.filter(
-    (item) => item.userId == session?.user.id
+    (item) => item.userId.toString() == session?.user.id
   );
   return allUserCarts;
 };
