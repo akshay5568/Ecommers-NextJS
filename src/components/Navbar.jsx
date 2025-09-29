@@ -13,7 +13,6 @@ import { useSession } from "next-auth/react";
 
 export const Navbar =  () => {
    const {data:session } = useSession()
-    console.log(session)
   return (
     <div className="flex w-full items-center justify-between h-16 p-3">
       <Link href={"/"}>

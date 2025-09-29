@@ -7,7 +7,7 @@ const SearchBar =  () => {
   const [input, setInput] = useState("");
    useEffect(() => {
        const callFunction = async () => {
-             await fetch('http://localhost:3000/product').then(res => res.json()).then(res=>setAllProducts(res));     
+             await fetch('http://127.0.0.1:3000/product').then(res => res.json()).then(res=>setAllProducts(res));     
        }
        callFunction();
    }, [] )
@@ -17,7 +17,6 @@ const SearchBar =  () => {
    const [focus,setFocus] = useState(false);
 
 
-  console.log(filterProductsByInput);
   return (
     <div className="w-full items-center text-black relative">
         <div className="w-100 flex ">

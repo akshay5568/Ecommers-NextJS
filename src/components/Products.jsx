@@ -28,7 +28,7 @@ const Products = async () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-between font-bold">
+            <div className="flex items-center justify-between font-bold">   
               <span>{pro.title}</span>
               <span>${pro.price}</span>
             </div>

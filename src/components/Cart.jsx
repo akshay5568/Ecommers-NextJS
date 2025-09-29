@@ -3,17 +3,18 @@ import Image from "next/image";
 import { Button } from "./ui/button";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import NoCart from "./NoCart";
 
 const Cart = ({ userCarts }) => {
   const [allUserCart, setAllUserCart] = useState(userCarts);
   const DeleteButton = async (id) => {
     try {
-      const res = fetch("http://localhost:3000/cart/api", {
+      const res = fetch("http://127.0.0.1:3000/cart/api", {
         method: "DELETE",
         body: JSON.stringify(id),
       });
 
-      setAllUserCart((prev) => prev.filter((carts) => carts._id !== id));
+      setAllUserCart((prev) => prev.filter((carts) => carts._id !== id));       
     } catch (error) {
       console.error(error);
     }
@@ -24,7 +25,8 @@ const Cart = ({ userCarts }) => {
   );
 
   return (
-    <div className="p-3 flex w-full">
+       <div>
+          {allUserCart.length > 0 ?  <div className="p-3 flex w-full">
       <div className="w-[90%] mt-3">
         {allUserCart.map((item, index) => {
           return (
@@ -79,7 +81,8 @@ const Cart = ({ userCarts }) => {
           <span className="block ">$ {totalCartValue}</span>
         </div>
       </div>
-    </div>
+    </div> : <NoCart/>}
+       </div>
   );
 };
 
