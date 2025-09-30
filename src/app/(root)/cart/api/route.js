@@ -38,7 +38,6 @@ export async function GET() {
 export async function DELETE(req) {
   try {
     const {id} = await req.json();
-    if (!id) return Response.json("Unable to delete Cart product");
     await Cart.findByIdAndDelete(id);
     return Response.json("Cart Deleted", {status:200})
   } catch (error) {

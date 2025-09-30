@@ -7,7 +7,7 @@ const SearchBar =  () => {
   const [input, setInput] = useState("");
    useEffect(() => {
        const callFunction = async () => {
-             await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product`).then(res => res.json()).then(res=>setAllProducts(res));     
+             await fetch(`/product`).then(res => res.json()).then(res=>setAllProducts(res));     
        }
        callFunction();   
    }, [] )
