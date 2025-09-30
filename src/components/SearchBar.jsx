@@ -9,7 +9,7 @@ const SearchBar =  () => {
        const callFunction = async () => {
              await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/product`).then(res => res.json()).then(res=>setAllProducts(res));     
        }
-       callFunction();
+       callFunction();   
    }, [] )
 
    const filterProductsByInput = AllProdcuts.filter(item => item.title.toLowerCase().includes(input.toLowerCase()));

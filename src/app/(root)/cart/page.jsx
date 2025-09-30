@@ -8,7 +8,7 @@ const page = async () => {
    }
   return (
     <div>
-        <Cart userCarts={allUserCarts}/>
+        <Cart userCarts={allUserCarts}/>   
     </div>
   )
 }

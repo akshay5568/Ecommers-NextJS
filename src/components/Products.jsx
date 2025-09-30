@@ -24,6 +24,7 @@ const Products = async () => {
                   height={400}
                   className="m-auto rounded-md object-fit h-full"
                   alt="productImage"
+                  unoptimized={true}
                 />
               </div>
             </div>

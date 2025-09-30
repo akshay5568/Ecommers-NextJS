@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
-import image from "../../public/image.jpg";
 import connectDB from "@/lib/db";
 import { Product } from "@/schemas/productSchema";
 import AddToCart from "./AddToCart";

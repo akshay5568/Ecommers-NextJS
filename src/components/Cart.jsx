@@ -6,11 +6,15 @@ import NoCart from "./NoCart";
 
 const Cart = ({ userCarts }) => {
   const [allUserCart, setAllUserCart] = useState(userCarts);
+
   const DeleteButton = async (id) => {
     try {
-      const res = fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/cart/api`, {
+      const res = fetch(`/cart/api`, {
         method: "DELETE",
-        body: JSON.stringify(id),
+        headers: {
+  "Content-Type": "application/json",
+},
+        body: JSON.stringify({id}),
       });
 
       setAllUserCart((prev) => prev.filter((carts) => carts._id !== id));       
