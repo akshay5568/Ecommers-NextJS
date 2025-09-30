@@ -10,14 +10,14 @@ const Products = async () => {
   await connectDB();
   const productData = await Product.find().lean();
   return (
-    <div className="p-3 flex flex-wrap gap-6 w-full h-fit">
+    <div className="p-3 flex max-sm:block flex-wrap gap-6 w-full h-fit">
       {productData.map((pro, index) => {
         const productid = pro._id.toString();
         return (
-          <div key={index} className="w-[18%] h-80">
+          <div key={index} className="w-[18%]  max-sm:w-full h-80">
           <Link href={`/product/${pro._id}`}>
             <div className="w-full bg-[#f6f6f6] rounded-md">
-              <div className="w-full h-[200px]">
+              <div className="w-full h-[200px]  ">
                 <Image
                   src={pro?.img}
                   width={400}

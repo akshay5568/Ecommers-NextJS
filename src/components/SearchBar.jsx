@@ -19,10 +19,8 @@ const SearchBar =  () => {
 
   return (
     <div className="w-full items-center text-black relative">
-        <div className="w-100 flex ">
+        <div className="w-100 max-sm:w-[100%] flex ">
             <Input value={input} onChange={(e) => setInput(e.target.value)} className={'rounded-xl'} onFocus={() => setFocus(true)} onBlur={() => setTimeout(() => setFocus(false) , 300)} placeholder="Search Product"/>
-
-
              {focus && <div className="absolute w-full h-50 overflow-y-scroll top-11 bg-[#ffffff] border-t-1 rounded-md z-50">
                {filterProductsByInput.map((item,index) => {
                   return (

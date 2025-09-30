@@ -52,7 +52,7 @@ const UploadProduct = () => {
 
 
   return (
-    <div className="w-[30%] p-5 rounded-md m-auto bg-gray-50">
+    <div className="w-[30%] max-sm:w-full p-5 rounded-md m-auto bg-gray-50">
        <h1 className="mb-2 ">UPLOAD PRODUCT VIA FILL THIS FORM</h1>
       <form onSubmit={handlerSubmit}>
         <input

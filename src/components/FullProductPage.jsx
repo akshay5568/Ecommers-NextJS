@@ -11,9 +11,9 @@ const FullProductPage = async ({id}) => {
   return (
     <div className="w-full p-2 h-fit">
 
-      <div className="flex  w-full gap-30 h-120">
+      <div className="flex max-sm:block  w-full gap-30 max-sm:h-80 h-120">
 
-        <div className="w-[50%] h-full">
+        <div className="w-[50%] max-sm:w-full h-full">
           <Image
             className="rounded-xl m-auto w-full h-full object-fit"
             alt="productImage"
@@ -23,7 +23,7 @@ const FullProductPage = async ({id}) => {
           />
         </div>
 
-        <div className="w-[50%]">
+        <div className="w-[50%] max-sm:w-full max-sm:mt-3">
           <div className="text-2xl font-bold">
             <span>{ProductDetails.title}</span>
           </div>
@@ -44,9 +44,11 @@ const FullProductPage = async ({id}) => {
             <span>${ProductDetails.price}</span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <Button className={'mt-2 rounded-md'}>Buy</Button>
-            <AddToCart productID={ProductDetails._id}/>
+          <div className="flex max-sm:w-full items-center gap-3">
+            <Button className={'mt-2 rounded-md max-sm:w-[50%]'}>Buy</Button>
+            <span className="block max-sm:w-[50%]">
+              <AddToCart productID={ProductDetails._id}/>
+            </span>
           </div>
         </div>
       </div>
