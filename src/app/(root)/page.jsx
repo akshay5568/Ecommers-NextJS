@@ -2,7 +2,7 @@ import HomeBanner from "@/components/HomeBanner";
 import Products from "@/components/Products";
 
 
-const Home = async () => {
+const Home = () => {
    
   return (
     <div className="w-full">

@@ -1,18 +1,25 @@
+'use client'
 import Image from "next/image";
 import Link from "next/link";
-import connectDB from "@/lib/db";
-import { Product } from "@/schemas/productSchema";
 import AddToCart from "./AddToCart";
+import { useEffect, useState } from "react";
 
+const Products = () => {
+  const [productData,setProductData] = useState(null)
 
+  useEffect(() => {
+      const apiCall = async () => {
+        const res = await fetch('/product');
+        const data = await res.json();
+        setProductData(data)
+      }
+      apiCall();
+  } , [] )
 
-const Products = async () => {
-  await connectDB();
-  const productData = await Product.find().lean();
   return (
     <div className="p-3 flex max-sm:block flex-wrap gap-6 w-full h-[100%]">
-      {productData.map((pro, index) => {
-        const productid = pro._id.toString();
+      {productData?.map((pro, index) => {
+        const productid = pro._id?.toString();
         return (
         <div key={index} className="w-[18%] max-lg:w-[30%] max-sm:w-full h-80 max-sm:h-90">
           <Link href={`/product/${pro._id}`}>
