@@ -1,5 +1,6 @@
 'use client'
 import { Button } from "@/components/ui/button"
+import { redirect } from "next/dist/server/api-utils"
 import { useState } from "react"
 
 const page = () => {
@@ -29,6 +30,7 @@ const page = () => {
         email:"",
         password:""
     })
+    redirect('/api/login')
    }
   return (
       <div>

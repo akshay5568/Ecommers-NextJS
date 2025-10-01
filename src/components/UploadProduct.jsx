@@ -13,7 +13,7 @@ const UploadProduct = () => {
   const [inputData, setInputData] = useState({
     title: "",
     details: "",
-    price: 0,
+    price:0,
     img:"",
   });
 
@@ -81,7 +81,7 @@ const UploadProduct = () => {
           name="price"
           placeholder="Enter price"
           value={inputData.price}
-          className="w-full p-2 border-1 border-gray-900 rounded-md"
+          className="w-full p-2 border-1 border-gray-900 rounded-md"   
           required
           onChange={inputHandler}
         />

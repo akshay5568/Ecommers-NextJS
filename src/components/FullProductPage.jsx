@@ -4,21 +4,20 @@ import connectDB from "@/lib/db";
 import { Product } from "@/schemas/productSchema";
 import AddToCart from "./AddToCart";
 
-const FullProductPage = async ({id}) => {
+const FullProductPage = async ({productID}) => {
 
   await connectDB();
-  const ProductDetails = await Product.findById(id);
+  const ProductDetails = await Product.findById(productID);
   return (
     <div className="w-full p-2 h-fit">
 
       <div className="flex max-sm:block  w-full gap-30 max-sm:h-80 h-120">
 
-        <div className="w-[50%] max-sm:w-full h-full">
+        <div className="w-[50%] max-sm:w-full max-lg:w-[70%] max-md:w-[70%] h-full relative">
           <Image
-            className="rounded-xl m-auto w-full h-full object-fit"
+            className="rounded-xl m-auto"
             alt="productImage"
-            width={200}
-            height={200}
+            fill
             src={ProductDetails.img}
           />
         </div>

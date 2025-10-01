@@ -23,7 +23,7 @@ const Cart = ({ userCarts }) => {
     }
   };
   let totalCartValue = allUserCart.reduce(
-    (acc, item) => acc + item.productId.price * item.qty,
+    (acc, item) => acc + item.productId?.price * item.qty,
     0
   );
 
@@ -37,26 +37,25 @@ const Cart = ({ userCarts }) => {
                 <div className="flex p-3 w-full" key={index}>
                   <div className="w-[75%] max-sm:w-full m-auto border-1 border-gray-150 p-3  rounded-md">
                     <div className="flex gap-5  w-full">
-                      <div className="w-30">
+                      <div className="w-40 h-30 relative">
                         <Image
                           className="rounded-md w-30 h-30 object-fit"
-                          width={100}
-                          height={100}
-                          src={item.productId.img}
+                          fill
+                          src={item.productId?.img}
                           alt="product image"
                         />
                       </div>
                       <div className="w-full flex gap-3 items-end justify-between">
                         <div>
-                          <span className="block">{item.productId.title}</span>
+                          <span className="block">{item.productId?.title}</span>
                           <span className="block text-xs text-gray-500">
-                            {item.productId.details}
+                            {item.productId?.details}
                           </span>
                           <span className="block text-xs text-gray-500">
-                            {item.productId.rating.length}
+                            {item.productId?.rating?.length}
                           </span>
                           <span className="block mt-5 text-xl font-semibold max-sm:text-xs">
-                            ${item.productId.price}
+                            ${item.productId?.price}
                           </span>
                         </div>
 
