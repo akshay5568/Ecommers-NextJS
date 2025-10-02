@@ -10,18 +10,14 @@ export default function LoginPage() {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    const result = await signIn("credentials", {
+    await signIn("credentials", {
       redirect: false,
       email,
       password,
       callbackUrl: "/",
     });
 
-     if (result?.error === "REDIRECT_TO_SIGNUP") {
-    window.location.href = "/signup";
-  } else if (!result?.error) {
-    window.location.href = result.url || "/";
-  }
+ 
   }
 
  
