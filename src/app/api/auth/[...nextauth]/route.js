@@ -6,7 +6,6 @@ import bcrypt from "bcrypt";
 import connectDB from "@/lib/db";
 import { User } from "@/schemas/usersSchema";
 
-
 export const authOptions = {
   providers: [
     GoogleProvider({
@@ -28,13 +27,13 @@ export const authOptions = {
           user.password
         );
         if (!user) {
-          // const hashedPassword = await bcrypt.hash(credentials.password, 10);
-          // user = await User.create({
-          //   email: credentials.email,
-          //   password: hashedPassword,
-          // });
+          const hashedPassword = await bcrypt.hash(credentials.password, 10);
+          user = await User.create({
+            email: credentials.email,
+            password: hashedPassword,
+          });
 
-          return null;
+          return user;
         }
         if (!isPassMatch) return null;
 
@@ -48,17 +47,17 @@ export const authOptions = {
   session: {
     strategy: "jwt",
   },
-  pages:{
-      signIn:"/signup",
-  },
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
         await connectDB();
         let dbUser = await User.findOne({ email: user.email });
-         if (!dbUser) {
-         return "No user Found"
-      }
+        if (!dbUser) {
+          dbUser = await User.create({
+            email: user.email,
+            password: null,
+          });
+        }
 
         token.id = dbUser._id;
       }
