@@ -1,10 +1,14 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { Cart } from "@/schemas/cartSchema";
+import { getServerSession } from "next-auth";
 
 export async function POST(req) {
   try {
+    const session = await getServerSession(authOptions);
+    if(!session) return Response.json("Please Login then try to add in cart", {status:404});
     const { productID, userID } = await req.json();
     if (!userID)
-      return Response.json("Please Login then add try to add in cart", {
+      return Response.json("Unauthrised user", {
         status: 404,
       });
     const allCarts = await Cart.find({ productId: productID });
@@ -28,6 +32,8 @@ export async function POST(req) {
 
 export async function GET() {
   try {
+    const session = await getServerSession(authOptions);
+    if(!session) return Response.json("Unauthrised user", {status:404});
     const CartsData = await Cart.find().populate("productId");
     return new Response(JSON.stringify(CartsData), { status: 200 });
   } catch (error) {
@@ -37,6 +43,8 @@ export async function GET() {
 
 export async function DELETE(req) {
   try {
+    const session = await getServerSession(authOptions);
+    if(!session) return Response.json("Unauthrised user", {status:404});
     const {id} = await req.json();
     await Cart.findByIdAndDelete(id);
     return Response.json("Cart Deleted", {status:200})
