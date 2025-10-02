@@ -36,6 +36,23 @@ export const authOptions = {
     strategy: "jwt",
   },
   callbacks: {
+      async signIn({ user, account }) {
+      await connectDB();
+
+      const dbUser = await User.findOne({ email: user.email });
+
+      // If user does not exist in DB → redirect them to signup
+      if (!dbUser) {
+        if (account.provider === "google") {
+          // Block login and redirect manually
+          throw new Error("REDIRECT_TO_SIGNUP");
+        }
+        return false;
+      }
+
+      return true;
+    },
+    
     async jwt({ token, user }) {
         if (user) {
            await connectDB();
