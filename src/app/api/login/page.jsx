@@ -11,6 +11,7 @@ export default function LoginPage() {
     const password = e.target.password.value;
 
     await signIn("credentials", {
+      redirect:false,
       email,
       password,
       callbackUrl: "/"

@@ -27,7 +27,7 @@ const UserProducts = () => {
       {userProduct?.length > 0
         ? userProduct?.map((item, index) => {
             return (
-              <div className="flex gap-3 justify-between border-1 m-3 p-3 items-end">
+              <div key={index} className="flex gap-3 justify-between border-1 m-3 p-3 items-end">
                 <div className="flex gap-3 ">
                   <div className="w-30 h-30 relative">
                     <Image

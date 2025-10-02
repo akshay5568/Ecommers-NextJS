@@ -20,8 +20,11 @@ export const authOptions = {
       },
       async authorize(credentials) {
         await connectDB();
+        console.log(credentials)
         const user = await User.findOne({ email: credentials.email });
-        const isPassMatch = await bcrypt.compare(credentials.password, user.password);   
+        const isPassMatch = await bcrypt.compare(credentials.password, user.password);  
+        if(!user) return null;
+        if(!isPassMatch) return null; 
         if (user && isPassMatch) {
           return user;
         }
@@ -37,7 +40,7 @@ export const authOptions = {
         if (user) {
            await connectDB();
            let dbUser = await User.findOne({email:user.email})   
-           if (!dbUser) return null;
+           if (!dbUser) return "No user found";
 
            token.id = dbUser._id;
         }
