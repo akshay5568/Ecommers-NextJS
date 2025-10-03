@@ -22,6 +22,15 @@ const UserProducts = () => {
     callApi();
   }, []);
 
+  const DeleteProduct = async (id) => {
+      const respons =  await fetch('/product', {
+         method:"DELETE",
+         body:JSON.stringify(id)
+       })
+    setUserProduct(prev => prev.filter(item => item._id !== id));
+  }
+
+
   return (
     <div className="w-full h-full p-2">
       {userProduct?.length > 0
@@ -46,7 +55,7 @@ const UserProducts = () => {
                 </div>
 
                 <div>
-                  <Button>Delete</Button>
+                  <Button onClick={() => DeleteProduct(item._id)}>Delete</Button>
                 </div>
               </div>
             );
