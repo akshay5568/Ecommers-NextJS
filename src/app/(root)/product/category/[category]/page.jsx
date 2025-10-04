@@ -1,25 +1,37 @@
-'use client'
-import { useParams } from "next/navigation"
-import { useEffect } from "react";
+"use client";
+import Products from "@/components/Products";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const page = () => {
-   const {category} = useParams();
-   useEffect(() => {
-        const apiCall = async () => {
-          const response = await fetch('/product/category', {
-               method:"POST",
-               body:JSON.stringify(category)
-            })
-            const products = await response.json();
-            console.log(products);
-        }
-        apiCall();
-   } ,[])
-  return (
-      <div>
-          nknkknknkn
-      </div>
-  )
-}
+  const { category } = useParams();
+  const [data, setData] = useState();
+  useEffect(() => {
+    try {
+      const apiCall = async () => {
+        const response = await fetch("/product/category", {
+          method: "POST",
+          body: JSON.stringify(category),
+        });
+        const products = await response.json();
+        setData(products);
+      };
+      apiCall();
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
 
-export default page
+  
+  return (
+    <div>
+      {data !== "No Product Found based on this category" ? (
+         <Products productData={data} /> 
+      ) : (
+        "No products found based on this category"
+      )}
+    </div>
+  );
+};
+
+export default page;
