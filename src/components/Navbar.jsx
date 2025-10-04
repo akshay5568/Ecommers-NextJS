@@ -33,7 +33,7 @@ export const Navbar =  () => {
         <IoIosSearch/>
       </div>
 
-      <div className={`${focus ? "max-sm:inline ": "hidden"} z-40`}><SearchBar/></div>
+      <div className={`${focus ? "max-sm:inline ": "hidden"} z-40`}><SearchBar/></div>    
 
      <div className="max-sm:hidden">
           <Catagery/>

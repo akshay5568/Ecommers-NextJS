@@ -15,6 +15,7 @@ const UploadProduct = () => {
     details: "",
     price:0,
     img:"",
+    category:"",
   });
 
  const inputHandler = (e) => {
@@ -46,7 +47,8 @@ const UploadProduct = () => {
         title:"",
         details:"",
         price:"",
-        img:""
+        img:"",
+        category:""
       })
   }
 
@@ -94,6 +96,17 @@ const UploadProduct = () => {
           required
           className="w-full p-2 border-1 border-gray-900 rounded-md"
 
+          onChange={inputHandler}
+        />
+
+         <br /><br />
+         <input
+          type="text"
+          name="category"
+          placeholder="Enter category"
+          value={inputData.category}
+          required
+          className="w-full p-2 border-1 border-gray-900 rounded-md"
           onChange={inputHandler}
         />
         <Button className={'mt-2 p-2'}>Submit</Button>
