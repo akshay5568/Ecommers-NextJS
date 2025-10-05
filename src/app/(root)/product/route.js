@@ -20,7 +20,7 @@ export async function GET() {
   try {
     await connectDB();
     const data = await Product.find();
-    return Response.json(data);
+    return Response.json(data, {status:200});
   } catch (error) {
     console.error(error);
   }
