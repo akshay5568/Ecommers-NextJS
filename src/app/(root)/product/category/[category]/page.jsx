@@ -1,5 +1,8 @@
 "use client";
+import AddToCart from "@/components/AddToCart";
 import Products from "@/components/Products";
+import Image from "next/image";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -26,7 +29,43 @@ const page = () => {
   return (
     <div>
       {data !== "No Product Found based on this category" ? (
-         <Products productData={data} /> 
+          <div className="p-3 flex max-sm:block flex-wrap gap-6 w-full h-[100%]">
+      {data?.map((pro, index) => {
+        const productid = pro._id?.toString();
+        return (
+        <div key={index} className="w-[18%] max-lg:w-[30%] max-sm:w-full h-80 max-sm:h-100">
+          <Link href={`/product/${pro._id}`}>
+            <div className="w-full h-[60%] max-sm:h-[70%] bg-[#f6f6f6] rounded-md">
+              <div className="w-full h-full relative">
+                <Image
+                  src={pro?.img}
+                  fill
+                  className="m-auto rounded-md object-fit h-full"
+                  alt="productImage"
+                />
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between font-bold">   
+              <span>{pro.title}</span>
+              <span>${pro.price}</span>
+            </div>
+
+            <div className="text-xs text-gray-500">
+              <span>{pro.details}</span>
+            </div>
+
+            <div className="text-xs text-gray-500">
+              <span>{pro.rating.length}</span>
+            </div>
+
+           
+          </Link>
+             <AddToCart productID={productid}/>
+        </div>
+        );
+      })}
+    </div>
       ) : (
         "No products found based on this category"
       )}

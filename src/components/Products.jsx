@@ -2,35 +2,35 @@
 import Image from "next/image";
 import Link from "next/link";
 import AddToCart from "./AddToCart";
-// import { useEffect, useState } from "react";
-// import Loading from "./Loading";
+import { useEffect, useState } from "react";
+import Loading from "./Loading";
 
-const Products = ({productData}) => {
-  // const [productData,setProductData] = useState(null)
-  // const [loading, setLoading] = useState(true);
-  // useEffect(() => {
-  //     const apiCall = async () => {
-  //       try {
-  //       const res = await fetch('/product');
-  //       const data = await res.json();
-  //       setProductData(data)
-  //       } catch (error) {
-  //         console.error(error)
-  //       }
-  //       finally {
-  //          setLoading(false)
-  //       }
-  //     }
-  //     apiCall();
-  // } , [] )
+const Products = () => {
+  const [productData,setProductData] = useState(null)
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+      const apiCall = async () => {
+        try {
+        const res = await fetch('/product');
+        const data = await res.json();
+        setProductData(data)
+        } catch (error) {
+          console.error(error)
+        }
+        finally {
+           setLoading(false)
+        }
+      }
+      apiCall();
+  } , [] )
 
-  // if(loading) {
-  //     return (
-  //         <div className="w-full h-full flex items-center justify-center">
-  //             <Loading/>
-  //         </div>
-  //     )
-  // }
+  if(loading) {
+      return (
+          <div className="w-full h-full flex items-center justify-center">
+              <Loading/>
+          </div>
+      )
+  }
 
   return (
     <div className="p-3 flex max-sm:block flex-wrap gap-6 w-full h-[100%]">
