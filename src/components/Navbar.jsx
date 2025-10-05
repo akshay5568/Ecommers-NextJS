@@ -35,7 +35,7 @@ export const Navbar =  () => {
 
       <div className={`${focus ? "max-sm:inline ": "hidden"} z-40`}><SearchBar/></div>    
 
-     <div className="max-sm:hidden">
+     <div className={`${focus ? "max-sm:hidden" : "inline"}`}>
           <Catagery/>
      </div>
 
@@ -43,7 +43,7 @@ export const Navbar =  () => {
         <SearchBar />
       </div>
 
-      {session?.user ?  <div className="flex items-center gap-7">
+      {session?.user ?  <div className={`flex items-center gap-7 ${focus ? "max-sm:hidden" : "block"}`}>
         <Link href={"/profile"} className="flex items-center gap-1">
           <CgProfile /> Profile
         </Link> 
@@ -51,7 +51,7 @@ export const Navbar =  () => {
         <Link href={"/cart"} className="flex items-center gap-1">
           <IoIosCart /> Cart {}
         </Link> 
-      </div> : <div className="flex gap-2 ">
+      </div> : <div className={`flex gap-2 ${focus ? "max-sm:hidden" : "block"}`}>
             <Link href={'/api/login'}>Login</Link> 
             <Link href={'/signup'}>signup</Link> 
           </div>}
