@@ -20,7 +20,7 @@ export async function GET() {
   try {
     await connectDB();
     const data = await Product.find();
-    const filterdDataForRefresh = data.splice(Math.floor(Math.random() * 10), data.length);
+    const filterdDataForRefresh = data.splice(Math.floor(Math.random() * 10), data.length);   
     return Response.json(filterdDataForRefresh, {status:200});
   } catch (error) {
     console.error(error);

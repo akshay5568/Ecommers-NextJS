@@ -1,6 +1,5 @@
 "use client";
 import AddToCart from "@/components/AddToCart";
-import Products from "@/components/Products";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";

@@ -19,6 +19,7 @@ export const Catagery = () => {
              <option value="Footwear">Footwear</option>
              <option value="Clothes">Clothes</option>
              <option value="Grocery">Grocery</option>
+             <option value="Others">Others</option>
          </select>
   )
 }

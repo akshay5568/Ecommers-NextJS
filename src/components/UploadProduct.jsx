@@ -100,7 +100,7 @@ const UploadProduct = () => {
         />
 
          <br /><br />
-         <input
+         <select
           type="text"
           name="category"
           placeholder="Enter category"
@@ -108,7 +108,13 @@ const UploadProduct = () => {
           required
           className="w-full p-2 border-1 border-gray-900 rounded-md"
           onChange={inputHandler}
-        />
+         >
+         <option value="electronic">Electronic</option>
+         <option value="Footwear">Footwear</option>
+         <option value="Clothes">Clothes</option>
+         <option value="Grocery">Grocery</option>
+         <option value="Others">Others</option>
+        </select>
         <Button className={'mt-2 p-2'}>Submit</Button>
       </form>
     </div>
