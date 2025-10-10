@@ -1,5 +1,6 @@
 "use client";
 import AddToCart from "@/components/AddToCart";
+import Loading from "@/components/Loading";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -8,6 +9,7 @@ import { useEffect, useState } from "react";
 const page = () => {
   const { category } = useParams();
   const [data, setData] = useState();
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     try {
       const apiCall = async () => {
@@ -22,8 +24,18 @@ const page = () => {
     } catch (error) {
       console.error(error);
     }
+    finally{
+       setLoading(false);
+    }
   }, []);
 
+  if (loading) {
+    return (
+       <div className="w-full h-full flex items-center justify-center">
+         <Loading/>
+       </div>
+    )
+  }
   
   return (
     <div>

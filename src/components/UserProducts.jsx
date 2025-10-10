@@ -4,11 +4,12 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
+import Loading from "./Loading";
 
 const UserProducts = () => {
   const { data: session } = useSession();
   const [userProduct, setUserProduct] = useState(null);
-
+  const [loading,setLoading] = useState(true);
   useEffect(() => {
     const callApi = async () => {
       try {
@@ -17,6 +18,9 @@ const UserProducts = () => {
           .then((res) => setUserProduct(res));
       } catch (err) {
         console.error(err);
+      }
+      finally{
+          setLoading(false);
       }
     };
     callApi();
@@ -30,6 +34,13 @@ const UserProducts = () => {
     setUserProduct(prev => prev.filter(item => item._id !== id));
   }
 
+  if (loading) {
+     return (
+      <div className="w-full h-full flex items-center justify-center">
+          <Loading/>
+      </div>
+     )
+  }
 
   return (
     <div className="w-full h-full p-2">
