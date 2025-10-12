@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import NoCart from "./NoCart";
+import Link from "next/link";
 
 const Cart = ({ userCarts }) => {
   const [allUserCart, setAllUserCart] = useState(userCarts);
@@ -37,14 +38,14 @@ const Cart = ({ userCarts }) => {
                 <div className="flex p-3 w-full" key={index}>
                   <div className="w-[75%] max-sm:w-full m-auto border-1 border-gray-150 p-3  rounded-md">
                     <div className="flex gap-5  w-full">
-                      <div className="w-40 h-30 relative">
+                      <Link href={`/product/${item.productId?._id}`} className="w-40 h-30 relative">
                         <Image
                           className="rounded-md w-30 h-30 object-fit"
                           fill
                           src={item.productId?.img}
                           alt="product image"
                         />
-                      </div>
+                      </Link>
                       <div className="w-full flex gap-3 items-end justify-between">
                         <div>
                           <span className="block">{item.productId?.title}</span>

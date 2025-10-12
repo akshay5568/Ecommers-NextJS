@@ -53,7 +53,7 @@ const Products = () => {
               </div>
 
               <div className="flex items-center justify-between font-bold">
-                <span>{pro.title}</span>
+                <span>{pro.title.substring(0,25) + ""}</span>
                 <span>${pro.price}</span>
               </div>
 

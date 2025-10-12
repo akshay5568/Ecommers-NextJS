@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import Loading from "./Loading";
+import Link from "next/link";
 
 const UserProducts = () => {
   const { data: session } = useSession();
@@ -49,13 +50,13 @@ const UserProducts = () => {
             return (
               <div key={index} className="flex gap-3 justify-between border-1 m-3 p-3 items-end">
                 <div className="flex gap-3 ">
-                  <div className="w-30 h-30 relative">
+                  <Link href={`/product/${item._id}`} className="w-30 h-30 relative">
                     <Image
                       fill
                       className="rounded-md"
                       src={item.img}
                     />
-                  </div>
+                  </Link>
 
                   <div>
                     <span className="block">{item.title}</span>

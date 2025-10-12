@@ -8,12 +8,11 @@ const Profile = async () => {
 
   return (
     <div className="w-full h-[50%]">
-      <div className="flex gap-3 w-[30%] max-sm:w-full p-2">
+      <div className="flex max-sm:block gap-3 w-[30%] max-sm:w-full p-2">
         <div>
             <label htmlFor=""><span className="flex items-center">Name <FiCornerRightDown/></span> </label>
             <input type="text" value={session?.user.name} disabled className="border-1 p-1 rounded-md  cursor-pointer"/>
         </div>
-
         <div>
           <label htmlFor=""><span className="flex items-center">Email <FiCornerRightDown/></span></label>
           <input type="text" value={session?.user.email} disabled className="border-1 rounded-md p-1 w-80 cursor-pointer"/>
